@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quora Page</title>
+</head>
+<body>
+    <h3><a href="{% url 'askQue' %}">Ask Question</a></h3>
+    <ul>
+    {% for q in object_list%}
+        <li><a href="{%url 'question' q.pk %}"> {{q.question}} </a></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

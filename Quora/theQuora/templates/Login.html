@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+    <form method="post">{%csrf_token%}
+    <h2>LogIn</h2>
+
+    <label for="username">Username</label>
+    <input type="text" placeholder="Enter username" name="username">
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Enter the password" autocomplete="off" name="password">
+
+    <button type="submit">LogIn</button>
+    <br><a href="{% url 'signup' %}">Create account?</a>
+</form>
+</body>
+</html>

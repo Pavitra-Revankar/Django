@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question</title>
+</head>
+<body>
+    <p style="padding:0px;margin-bottom:0px"><strong>{{q.user}}</strong></p>
+   <h1 style="padding:0px;margin-top:0px">{{q.question}}</h1>
+   <hr><hr>
+    <h2>Answers</h2>
+   {% if not q.answer.all %}
+        No Answers Yet....<a href="{% url 'answer' q.pk %}">Try to answer</a>
+   {%else%}
+
+        <br>
+        {%for c in q.answer.all%}
+        <strong>{{c.name}} -{{c.date_added}}</strong>
+        <br>
+        {{c.body}}
+        <br>
+
+        <br><br>
+        {%endfor%}
+   {%endif%}
+
+   <br><hr>
+    <form action="{% url 'like_post' q.pk%}"  method="post">{%csrf_token%}
+               <a href="{% url 'like_post' q.pk%}">Like</a> - {{ q.total_likes}} Likes
+    </form>
+   <a href="{% url 'answer' q.pk %}" ><strong>Comment</strong></a>
+</body>
+</html>
